@@ -8,7 +8,7 @@ import Image2 from "../assets/images/coffeeImage.png";
 import Image3 from "../assets/images/coffeeImage.png";
 
 const HeroSection = () => {
-  // Enhanced carousel data with more detailed content
+  // Enhanced carousel data with orange theme
   const carouselItems = [
     {
       id: 1,
@@ -17,7 +17,7 @@ const HeroSection = () => {
       subtitle: "Transform Your Business",
       description: "Discover our cutting-edge approaches that drive growth and innovation for forward-thinking organizations.",
       buttonText: "Explore Solutions",
-      accentColor: "from-orange-500 to-red-600"
+      accentColor: "bg-orange-600"
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const HeroSection = () => {
       subtitle: "Real Results, Real Impact",
       description: "See how we've helped industry leaders achieve unprecedented growth and overcome complex challenges.",
       buttonText: "View Success Stories",
-      accentColor: "from-blue-500 to-purple-600"
+      accentColor: "bg-orange-500"
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const HeroSection = () => {
       subtitle: "Stay Ahead of the Curve",
       description: "Equip your organization with next-generation tools and strategies to thrive in tomorrow's landscape.",
       buttonText: "Start Your Journey",
-      accentColor: "from-green-500 to-teal-600"
+      accentColor: "bg-orange-700"
     }
   ];
 
@@ -172,11 +172,11 @@ const HeroSection = () => {
 
   const buttonVariants = {
     initial: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.05,
-      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      transition: { 
-        type: "spring", 
+      boxShadow: "0 10px 15px -3px rgba(255, 165, 0, 0.3), 0 4px 6px -2px rgba(255, 165, 0, 0.2)",
+      transition: {
+        type: "spring",
         stiffness: 400,
         damping: 10
       }
@@ -190,14 +190,14 @@ const HeroSection = () => {
     tap: { scale: 0.9 }
   };
 
-  // Particle effect component
+  // Particle effect component with orange theme
   const ParticleBackground = ({ accentColor }) => {
     return (
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className={`absolute rounded-full bg-gradient-to-br ${accentColor} opacity-20`}
+            className={`absolute rounded-full ${accentColor} opacity-20`}
             initial={{
               x: Math.random() * 100 - 50 + "%",
               y: Math.random() * 100 - 50 + "%",
@@ -234,9 +234,9 @@ const HeroSection = () => {
   };
 
   return (
-    <div 
-      id="HeroSection" 
-      className="relative w-full h-screen overflow-hidden"
+    <div
+      id="HeroSection"
+      className="relative w-full h-screen overflow-hidden bg-black"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -260,12 +260,12 @@ const HeroSection = () => {
               <img
                 src={carouselItems[currentIndex].image}
                 alt={`Slide ${currentIndex + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover opacity-70"
                 loading="lazy"
               />
 
-              {/* Enhanced gradient overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/80"></div>
+              {/* Enhanced overlay for better text readability - orange theme */}
+              <div className="absolute inset-0 bg-black/80"></div>
 
               {/* Text content with enhanced animations */}
               <div className="absolute inset-0 flex flex-col justify-center items-start px-8 sm:px-16 md:px-24 lg:px-32 text-white z-10">
@@ -277,28 +277,26 @@ const HeroSection = () => {
                   exit="exit"
                 >
                   {/* Decorative element */}
-                  <div className={`h-1 w-16 mb-6 bg-gradient-to-r ${carouselItems[currentIndex].accentColor} rounded-full`}></div>
-                  
+                  <div className={`h-1 w-16 mb-6 ${carouselItems[currentIndex].accentColor} rounded-full`}></div>
+
                   {/* Subtitle */}
-                  <h2 className="text-lg sm:text-xl uppercase tracking-widest mb-2 font-light text-gray-300">
+                  <h2 className="text-lg sm:text-xl uppercase tracking-widest mb-2 font-light text-orange-300">
                     {carouselItems[currentIndex].subtitle}
                   </h2>
-                  
-                  {/* Title with gradient */}
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-                    <span className={`bg-clip-text text-transparent bg-gradient-to-r ${carouselItems[currentIndex].accentColor}`}>
-                      {carouselItems[currentIndex].title}
-                    </span>
+
+                  {/* Title with orange color */}
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-orange-50">
+                    {carouselItems[currentIndex].title}
                   </h1>
-                  
+
                   {/* Description */}
                   <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-200 font-light leading-relaxed">
                     {carouselItems[currentIndex].description}
                   </p>
-                  
+
                   {/* CTA Button with hover animation */}
-                  <motion.button 
-                    className={`bg-gradient-to-r ${carouselItems[currentIndex].accentColor} text-white font-medium py-3 px-8 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg`}
+                  <motion.button
+                    className={`${carouselItems[currentIndex].accentColor} text-white font-medium py-3 px-8 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg`}
                     variants={buttonVariants}
                     initial="initial"
                     whileHover="hover"
@@ -309,10 +307,10 @@ const HeroSection = () => {
                       <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
                   </motion.button>
-                  
+
                   {/* Secondary action */}
                   <div className="mt-6">
-                    <a href="#" className="text-gray-300 hover:text-white underline underline-offset-4 text-sm font-medium flex items-center">
+                    <a href="#" className="text-orange-300 hover:text-orange-200 underline underline-offset-4 text-sm font-medium flex items-center">
                       <span>Learn about our process</span>
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -336,8 +334,8 @@ const HeroSection = () => {
             whileHover={{ scale: 1.5 }}
             className={`w-3 h-3 rounded-full transition-all ${
               index === currentIndex
-                ? `bg-gradient-to-r ${carouselItems[index].accentColor} shadow-lg shadow-${carouselItems[index].accentColor.split(" ")[1].replace("to-", "")}/30`
-                : 'bg-white/30 hover:bg-white/70'
+                ? `${carouselItems[index].accentColor} shadow-lg shadow-orange-500/30`
+                : 'bg-white/30 hover:bg-orange-300/70'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -349,20 +347,20 @@ const HeroSection = () => {
         {/* Previous button */}
         <motion.button
           onClick={goToPrev}
-          className="p-3 rounded-full bg-black/20 backdrop-blur-md hover:bg-black/40 transition-colors border border-white/10"
+          className="p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-orange-500/20"
           aria-label="Previous slide"
           variants={navButtonVariants}
           initial="initial"
           whileHover="hover"
           whileTap="tap"
         >
-          <ChevronLeftIcon className="w-6 h-6 text-white" />
+          <ChevronLeftIcon className="w-6 h-6 text-orange-300" />
         </motion.button>
 
         {/* Progress bar */}
-        <div className="w-64 bg-white/20 h-1 rounded-full overflow-hidden">
-          <motion.div 
-            className={`h-full bg-gradient-to-r ${carouselItems[currentIndex].accentColor}`}
+        <div className="w-64 bg-black/40 h-1 rounded-full overflow-hidden border border-orange-500/10">
+          <motion.div
+            className={`h-full ${carouselItems[currentIndex].accentColor}`}
             style={{ width: `${progress}%` }}
             ref={progressBarRef}
           />
@@ -371,43 +369,41 @@ const HeroSection = () => {
         {/* Next button */}
         <motion.button
           onClick={goToNext}
-          className="p-3 rounded-full bg-black/20 backdrop-blur-md hover:bg-black/40 transition-colors border border-white/10"
+          className="p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-orange-500/20"
           aria-label="Next slide"
           variants={navButtonVariants}
           initial="initial"
           whileHover="hover"
           whileTap="tap"
         >
-          <ChevronRightIcon className="w-6 h-6 text-white" />
+          <ChevronRightIcon className="w-6 h-6 text-orange-300" />
         </motion.button>
 
         {/* Auto-play toggle with icon */}
         <motion.button
           onClick={toggleAutoPlay}
-          className="ml-2 p-3 rounded-full bg-black/20 backdrop-blur-md hover:bg-black/40 transition-colors border border-white/10"
+          className="ml-2 p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-orange-500/20"
           variants={navButtonVariants}
           initial="initial"
           whileHover="hover"
           whileTap="tap"
         >
           {isAutoPlaying ? (
-            <PauseIcon className="w-5 h-5 text-white" />
+            <PauseIcon className="w-5 h-5 text-orange-300" />
           ) : (
-            <PlayIcon className="w-5 h-5 text-white" />
+            <PlayIcon className="w-5 h-5 text-orange-300" />
           )}
         </motion.button>
       </div>
 
       {/* Slide counter */}
-      <div className="absolute top-8 right-8 text-white/80 font-mono text-sm backdrop-blur-md bg-black/20 px-3 py-1 rounded-full border border-white/10">
+      <div className="absolute top-8 right-8 text-orange-300 font-mono text-sm backdrop-blur-md bg-black/40 px-3 py-1 rounded-full border border-orange-500/20">
         {currentIndex + 1}/{carouselItems.length}
       </div>
 
-      
-
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black/50 to-transparent z-10"></div>
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black/80 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
     </div>
   );
 };

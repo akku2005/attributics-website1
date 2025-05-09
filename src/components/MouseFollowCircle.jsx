@@ -4,9 +4,30 @@ import { gsap } from 'gsap';
 
 const MouseFollowCircle = () => {
   const [circleRef, setCircleRef] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (!circleRef) return;
+    const checkIfMobile = () => {
+      const userAgent = typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
+      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      setIsMobile(mobile);
+    };
+
+    checkIfMobile();
+
+    const handleResize = () => {
+      checkIfMobile();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!circleRef || isMobile) return;
 
     const moveCircle = (e) => {
       gsap.to(circleRef, {
@@ -22,7 +43,11 @@ const MouseFollowCircle = () => {
     return () => {
       window.removeEventListener('mousemove', moveCircle);
     };
-  }, [circleRef]);
+  }, [circleRef, isMobile]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <div
