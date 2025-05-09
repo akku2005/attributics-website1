@@ -54,12 +54,13 @@
 
 
 
-// src/pages/HomePage.jsx
 import React, { lazy, Suspense, useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Loader from '../components/Loader';
 
-// Lazy load all content components
+import Loader from '../components/Loader';
+import MainLayout from '../layouts/MainLayout';
+
+const Navbar = lazy(() => import('../components/Navbar'));
+const Footer = lazy(() => import('../components/Footer'));
 const HeroSection = lazy(() => import('./HeroSection'));
 const OurCreationprocessPage = lazy(() => import('./OurCreationprocessPage'));
 const OurServicesPage = lazy(() => import('./OurServicesPage'));
@@ -72,56 +73,56 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time (replace with actual loading logic)
+  
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // 1.5 seconds
+    }, 1500); 
 
     return () => clearTimeout(timer);
   }, []);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
-    <>
-      <Navbar />
+    <MainLayout>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Suspense >
+          <Navbar />
+          
+          <main className="flex-grow">
+            <section id="HeroSection">
+              <HeroSection />
+            </section>
 
-      <Suspense fallback={
-        <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-90">
-          <div className="animate-pulse rounded-full h-8 w-8 border-t-2 border-b-2 border-orange-500"></div>
-        </div>
-      }>
-        <section id="HeroSection">
-          <HeroSection />
-        </section>
+            <section id="co-creation-process">
+              <OurCreationprocessPage />
+            </section>
 
-        <section id="co-creation-process">
-          <OurCreationprocessPage />
-        </section>
+            <section id="our-services">
+              <OurServicesPage />
+            </section>
 
-        <section id="our-services">
-          <OurServicesPage />
-        </section>
+            <section id="our-solutions">
+              <OurSolutionPage />
+            </section>
 
-        <section id="our-solutions">
-          <OurSolutionPage />
-        </section>
+            <section id="partners">
+              <PartnerPage />
+            </section>
 
-        <section id="partners">
-          <PartnerPage />
-        </section>
+            <section id="careers">
+              <CareersPage />
+            </section>
 
-        <section id="careers">
-          <CareersPage />
-        </section>
-
-        <section id="contact">
-          <ContactPage />
-        </section>
-      </Suspense>
-    </>
+            <section id="contact">
+              <ContactPage />
+            </section>
+          </main>
+          
+          <Footer />
+        </Suspense>
+      )}
+    </MainLayout>
   );
 };
 
