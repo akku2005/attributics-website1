@@ -889,6 +889,7 @@
 //   );
 // }
 
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -1053,9 +1054,9 @@ export default function ServicesSection() {
 
   // Background variants
   const backgroundVariants = {
-    initial: { scale: 1.1, opacity: 0 },
-    animate: { scale: 1, opacity: 1, transition: { duration: 1.2, ease: "easeOut" } },
-    exit: { scale: 1.1, opacity: 0, transition: { duration: 0.5, ease: "easeIn" } }
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+    exit: { opacity: 0, transition: { duration: 0.3, ease: "easeIn" } }
   };
 
   // Service category variants
@@ -1102,67 +1103,8 @@ export default function ServicesSection() {
         >
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black/90"></div>
-
-          {/* Animated particle background */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className={`absolute rounded-full ${activeServiceData.color} opacity-20`}
-                initial={{
-                  x: Math.random() * 100 + "%",
-                  y: Math.random() * 100 + "%",
-                  scale: Math.random() * 0.5 + 0.2,
-                }}
-                animate={{
-                  x: [
-                    Math.random() * 100 + "%",
-                    Math.random() * 100 + "%",
-                    Math.random() * 100 + "%",
-                  ],
-                  y: [
-                    Math.random() * 100 + "%",
-                    Math.random() * 100 + "%",
-                    Math.random() * 100 + "%",
-                  ],
-                }}
-                transition={{
-                  duration: Math.random() * 20 + 20,
-                  ease: "linear",
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-                style={{
-                  width: Math.random() * 300 + 50,
-                  height: Math.random() * 300 + 50,
-                  filter: "blur(80px)",
-                }}
-              />
-            ))}
-          </div>
         </motion.div>
       </AnimatePresence>
-
-      {/* Subtle light beam effect */}
-      <div className="absolute top-0 left-1/4 w-1/2 h-full pointer-events-none">
-        <motion.div
-          className="absolute top-0 h-full w-full"
-          initial={{ opacity: 0.05 }}
-          animate={{
-            opacity: [0.05, 0.08, 0.05],
-            rotateZ: [5, 0, 5]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-          style={{
-            background: `linear-gradient(0deg, transparent 0%, ${activeServiceData.glowColor} 50%, transparent 100%)`,
-            transform: "skewX(-20deg)"
-          }}
-        />
-      </div>
 
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
@@ -1174,7 +1116,7 @@ export default function ServicesSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <div className={`h-1 w-10 ${activeServiceData.color} rounded-full`}></div>
+            <div className={`h-1 w-10 bg-orange-500 rounded-full`}></div>
             <p className="text-white/60 uppercase tracking-widest text-sm font-medium">Transform your business</p>
           </motion.div>
 
@@ -1186,7 +1128,7 @@ export default function ServicesSection() {
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               OUR <br />
-              <span className={`bg-clip-text text-transparent ${activeServiceData.color}`}>
+              <span className={`bg-clip-text text-transparent bg-orange-500`}>
                 SERVICES
               </span>
             </motion.h1>
@@ -1201,10 +1143,10 @@ export default function ServicesSection() {
                 {activeServiceData.subtitle}
               </p>
               <div className="flex items-center justify-start md:justify-end">
-                <div className={`p-3 sm:p-4 rounded-full ${activeServiceData.color} bg-opacity-20 mr-3`}>
+                <div className={`p-3 sm:p-4 rounded-full bg-orange-500 bg-opacity-20 mr-3`}>
                   {activeServiceData.icon}
                 </div>
-                <h2 className={`text-lg sm:text-xl font-medium bg-clip-text text-transparent ${activeServiceData.color}`}>
+                <h2 className={`text-lg sm:text-xl font-medium bg-clip-text text-transparent bg-orange-500`}>
                   {activeServiceData.title}
                 </h2>
               </div>
@@ -1243,7 +1185,7 @@ export default function ServicesSection() {
                 >
                   {/* Top luminous border */}
                   <motion.div
-                    className={`absolute top-0 left-0 right-0 h-1 ${activeServiceData.color}`}
+                    className={`absolute top-0 left-0 right-0 h-1 bg-orange-500`}
                     initial={{ scaleX: 0 }}
                     animate={{
                       scaleX: hoverIndex === index ? 1 : 0,
@@ -1259,7 +1201,7 @@ export default function ServicesSection() {
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
-                        className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full ${activeServiceData.color} bg-opacity-20`}
+                        className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-orange-500 bg-opacity-20`}
                       >
                         <span className="transform scale-110">{item.icon}</span>
                       </motion.div>
@@ -1290,12 +1232,12 @@ export default function ServicesSection() {
                       animate={{ opacity: 1 }}
                       transition={{ delay: index * 0.1 + 0.5 }}
                     >
-                      <span className={`bg-clip-text text-transparent ${activeServiceData.color}`}>
+                      <span className={`bg-clip-text text-transparent bg-orange-500`}>
                         View details
                       </span>
                       <motion.svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-4 w-4 ml-1 text-transparent bg-clip-text ${activeServiceData.color}`}
+                        className={`h-4 w-4 ml-1 text-transparent bg-clip-text bg-orange-500`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         initial={{ x: 0 }}
@@ -1334,13 +1276,13 @@ export default function ServicesSection() {
                   <div
                     className={`flex items-center mb-3 space-x-2 ${
                       activeService === service.id
-                        ? `text-transparent bg-clip-text ${service.color}`
+                        ? `text-transparent bg-clip-text bg-orange-500`
                         : "text-white/70"
                     }`}
                   >
                     <div className={`p-2 sm:p-3 rounded-full ${
                       activeService === service.id
-                        ? `${service.color} bg-opacity-10`
+                        ? `bg-orange-500 bg-opacity-10`
                         : "bg-white/5"
                     }`}>
                       {service.icon}
@@ -1351,7 +1293,7 @@ export default function ServicesSection() {
                   <h2
                     className={`text-xl sm:text-2xl lg:text-3xl font-bold transition-all duration-300 ${
                       activeService === service.id
-                        ? `text-transparent bg-clip-text ${service.color}`
+                        ? `text-transparent bg-clip-text bg-orange-500`
                         : "text-white/70"
                     }`}
                   >
@@ -1362,7 +1304,7 @@ export default function ServicesSection() {
                   <div className="relative h-1 mt-3 w-16">
                     {activeService === service.id && (
                       <motion.div
-                        className={`absolute inset-0 rounded-full ${service.color}`}
+                        className={`absolute inset-0 rounded-full bg-orange-500`}
                         layoutId="activeServiceIndicator"
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
@@ -1393,11 +1335,11 @@ export default function ServicesSection() {
               transition={{ delay: 0.2 }}
             >
               <div className="flex items-center space-x-3">
-                <div className={`p-2 sm:p-3 rounded-full ${activeServiceData.color} bg-opacity-20`}>
+                <div className={`p-2 sm:p-3 rounded-full bg-orange-500 bg-opacity-20`}>
                   {activeServiceData.icon}
                 </div>
                 <div>
-                  <h3 className={`text-base sm:text-lg font-medium text-transparent bg-clip-text ${activeServiceData.color}`}>
+                  <h3 className={`text-base sm:text-lg font-medium text-transparent bg-clip-text bg-orange-500`}>
                     {activeServiceData.title}
                   </h3>
                   <p className="text-white/70 text-xs sm:text-sm">
@@ -1511,7 +1453,7 @@ export default function ServicesSection() {
                     key={index}
                     className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
                       selectedImageIndex === index
-                        ? `${activeServiceData.color}`
+                        ? `bg-orange-500`
                         : "bg-white/30"
                     }`}
                     onClick={(e) => {

@@ -280,7 +280,7 @@ const HeroSection = () => {
                   <div className={`h-1 w-16 mb-6 ${carouselItems[currentIndex].accentColor} rounded-full`}></div>
 
                   {/* Subtitle */}
-                  <h2 className="text-lg sm:text-xl uppercase tracking-widest mb-2 font-light text-orange-300">
+                  <h2 className="text-lg sm:text-xl uppercase tracking-widest mb-2 font-light text-white">
                     {carouselItems[currentIndex].subtitle}
                   </h2>
 
@@ -310,7 +310,7 @@ const HeroSection = () => {
 
                   {/* Secondary action */}
                   <div className="mt-6">
-                    <a href="#" className="text-orange-300 hover:text-orange-200 underline underline-offset-4 text-sm font-medium flex items-center">
+                    <a href="#" className="text-white hover:text-orange-200 underline underline-offset-4 text-sm font-medium flex items-center">
                       <span>Learn about our process</span>
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -347,18 +347,18 @@ const HeroSection = () => {
         {/* Previous button */}
         <motion.button
           onClick={goToPrev}
-          className="p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-orange-500/20"
+          className="p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-white/20"
           aria-label="Previous slide"
           variants={navButtonVariants}
           initial="initial"
           whileHover="hover"
           whileTap="tap"
         >
-          <ChevronLeftIcon className="w-6 h-6 text-orange-300" />
+          <ChevronLeftIcon className="w-6 h-6 text-white" />
         </motion.button>
 
         {/* Progress bar */}
-        <div className="w-64 bg-black/40 h-1 rounded-full overflow-hidden border border-orange-500/10">
+        <div className="w-64 bg-black/40 h-1 rounded-full overflow-hidden border border-white/10">
           <motion.div
             className={`h-full ${carouselItems[currentIndex].accentColor}`}
             style={{ width: `${progress}%` }}
@@ -369,29 +369,29 @@ const HeroSection = () => {
         {/* Next button */}
         <motion.button
           onClick={goToNext}
-          className="p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-orange-500/20"
+          className="p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-white/20"
           aria-label="Next slide"
           variants={navButtonVariants}
           initial="initial"
           whileHover="hover"
           whileTap="tap"
         >
-          <ChevronRightIcon className="w-6 h-6 text-orange-300" />
+          <ChevronRightIcon className="w-6 h-6 text-white" />
         </motion.button>
 
         {/* Auto-play toggle with icon */}
         <motion.button
           onClick={toggleAutoPlay}
-          className="ml-2 p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-orange-500/20"
+          className="ml-2 p-3 rounded-full bg-black/40 backdrop-blur-md hover:bg-orange-900/40 transition-colors border border-white/20"
           variants={navButtonVariants}
           initial="initial"
           whileHover="hover"
           whileTap="tap"
         >
           {isAutoPlaying ? (
-            <PauseIcon className="w-5 h-5 text-orange-300" />
+            <PauseIcon className="w-5 h-5 text-white" />
           ) : (
-            <PlayIcon className="w-5 h-5 text-orange-300" />
+            <PlayIcon className="w-5 h-5 text-white" />
           )}
         </motion.button>
       </div>
