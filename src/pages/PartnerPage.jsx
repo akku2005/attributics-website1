@@ -2,14 +2,14 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 // Import partner logos
-import amplitudeLogo from '../assets/icons/Amplitude.png';
-import brazeLogo from '../assets/icons/Braze.png';
-import tealiumLogo from '../assets/icons/Tealium.png';
-import googleLogo from '../assets/icons/Google.png';
-import moengageLogo from '../assets/icons/MoEngage.png';
-import clevertapLogo from '../assets/icons/ClaverTap.png';
-import optimizelyLogo from '../assets/icons/Optimizely.png';
-import liferayLogo from '../assets/icons/Liferay.png';
+import amplitudeLogo from '../assets/icons/Amplitude.svg';
+import brazeLogo from '../assets/icons/Braze.svg';
+import tealiumLogo from '../assets/icons/Tealium.svg';
+import googleLogo from '../assets/icons/Google.svg';
+import moengageLogo from '../assets/icons/MoEngage.svg';
+import clevertapLogo from '../assets/icons/ClaverTap.svg';
+import optimizelyLogo from '../assets/icons/Optimizely.svg';
+import liferayLogo from '../assets/icons/Liferay.svg';
 
 export default function PartnerPlatforms() {
   const [hoveredPartner, setHoveredPartner] = useState(null);
