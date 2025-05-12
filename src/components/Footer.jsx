@@ -87,7 +87,6 @@
 // }
 // export default Footer;
 
-
 import { motion } from "framer-motion";
 import Logo from "../assets/icons/AttributicsLogo.svg";
 
@@ -131,7 +130,7 @@ function Footer() {
   const company = [
     { title: "About Us", href: "/about" },
     { title: "Careers", href: "#careers" },
-    { title: "Blog", href: "#blog" },
+    { title: "Blog", href: "/blog" },
     { title: "Contact", href: "/contact" }
   ];
 
@@ -164,34 +163,30 @@ function Footer() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={containerVariants}
-      className="bg-black text-white pt-12 pb-6 sm:pt-16 sm:pb-8"
+      className="bg-black text-white py-8"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Top section with logo and newsletter */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12 pb-6 md:pb-12 border-b border-gray-800">
-          {/* Logo and description - responsive */}
-          <motion.div variants={itemVariants} className="mb-6 md:mb-0">
-            <div className="flex items-center mb-3 sm:mb-4">
-              {/* Mobile placeholder logo */}
-
-
-              {/* Desktop full logo */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
+        {/* Logo and Newsletter */}
+        <div className="flex flex-col md:flex-row justify-between mb-8 pb-8 border-b border-gray-800">
+          {/* Logo and Description */}
+          <motion.div variants={itemVariants} className="mb-6 md:mb-0 max-w-md">
+            <div className="mb-4">
               <img
                 src={Logo}
-                alt="Attributics Tech Logo"
-                className="h-6 sm:h-8 w-auto"
+                alt="Attributics Logo"
+                className="h-6"
               />
             </div>
-            <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6 max-w-md">
+            <p className="text-gray-400 text-sm mb-4">
               Revolutionizing marketing attribution with AI-powered analytics that deliver actionable insights for modern businesses.
             </p>
-            <div className="flex space-x-2 sm:space-x-3">
+            <div className="flex space-x-2">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
                   whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-white hover:text-black rounded-full flex items-center justify-center transition-colors"
+                  className="w-8 h-8 bg-gray-800 hover:bg-white hover:text-black rounded-full flex items-center justify-center transition-colors"
                   aria-label={social.name}
                 >
                   <svg
@@ -208,23 +203,23 @@ function Footer() {
             </div>
           </motion.div>
 
-          {/* Newsletter section - responsive */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Subscribe to our newsletter</h3>
-            <p className="text-gray-400 text-sm mb-3 sm:mb-4">
+          {/* Newsletter */}
+          <motion.div variants={itemVariants} className="max-w-md">
+            <h3 className="text-lg font-bold mb-3">Subscribe to our newsletter</h3>
+            <p className="text-gray-400 text-sm mb-3">
               Get the latest news, articles, and resources, sent to your inbox weekly.
             </p>
             <form className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 flex-grow text-sm"
+                className="px-3 py-2 rounded bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 flex-grow text-sm"
                 required
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 sm:px-6 sm:py-3 bg-orange-500 text-black font-medium rounded-lg hover:bg-orange-600 transition-colors text-sm"
+                className="px-4 py-2 bg-orange-500 text-black font-medium rounded hover:bg-orange-600 transition-colors text-sm"
                 type="submit"
               >
                 Subscribe
@@ -233,11 +228,11 @@ function Footer() {
           </motion.div>
         </div>
 
-        {/* Main footer links - responsive grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 md:mb-12">
+        {/* Footer Links */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4">Quick Links</h3>
+            <h3 className="text-base font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -258,7 +253,7 @@ function Footer() {
 
           {/* Solutions */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4">Solutions</h3>
+            <h3 className="text-base font-bold mb-4">Solutions</h3>
             <ul className="space-y-2">
               {solutions.map((link, index) => (
                 <li key={index}>
@@ -279,7 +274,7 @@ function Footer() {
 
           {/* Company */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4">Company</h3>
+            <h3 className="text-base font-bold mb-4">Company</h3>
             <ul className="space-y-2">
               {company.map((link, index) => (
                 <li key={index}>
@@ -300,17 +295,17 @@ function Footer() {
 
           {/* Contact Us */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4">Contact Us</h3>
+            <h3 className="text-base font-bold mb-4">Contact Us</h3>
             <ul className="space-y-2">
               <li className="flex items-start">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 mt-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-7 h-5 mr-2 mt-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
                 <span className="text-gray-400 text-sm">Liberty House, D-1/1, N Main Rd, Liberty Phase 2, Ragvilas Society<br />Koregaon Park, Pune, Maharashtra 411001</span>
               </li>
               <li className="flex items-center">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
                 <a href="mailto:hr@attributics.com" className="text-gray-400 hover:text-white transition-colors text-sm">hr@attributics.com</a>
@@ -319,7 +314,7 @@ function Footer() {
           </motion.div>
         </div>
 
-        {/* Bottom section with copyright and policies */}
+        {/* Copyright and Links */}
         <div className="pt-6 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between">
           <motion.div variants={itemVariants} className="mb-3 md:mb-0 flex items-center text-sm">
             <p className="text-gray-400">
@@ -335,9 +330,9 @@ function Footer() {
             </svg>
             <p className="text-gray-400">All rights reserved.</p>
           </motion.div>
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-2 md:gap-4 justify-center">
-            <a href="#terms" className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">Terms of Service</a>
-            <a href="#privacy" className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm">Privacy Policy</a>
+          <motion.div variants={itemVariants} className="flex gap-4">
+            <a href="#terms" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+            <a href="#privacy" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
           </motion.div>
         </div>
       </div>

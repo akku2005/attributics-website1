@@ -1,16 +1,17 @@
-import React from 'react';
+// App.js
 import { BrowserRouter as Router } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
 import AppRoutes from './routes/AppRoutes';
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <MainLayout>
-        <AppRoutes />
-      </MainLayout>
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow">
+          <AppRoutes />
+        </main>
+      </div>
     </Router>
   );
-};
+}
 
 export default App;

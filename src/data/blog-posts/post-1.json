@@ -1,0 +1,51 @@
+{
+  "id": "unique-post-id",
+  "title": "How to Build a React Blog with JSON Data",
+  "slug": "how-to-build-react-blog-json-data",
+  "author": {
+    "name": "Jane Smith",
+    "avatar": "/images/authors/jane-smith.jpg"
+  },
+  "date": "2025-05-09T10:00:00Z",
+  "lastUpdated": "2025-05-09T14:30:00Z",
+  "excerpt": "Learn how to create a dynamic blog using React that pulls content from JSON files.",
+  "coverImage": "/images/blog/react-blog-cover.jpg",
+  "tags": ["react", "javascript", "web development"],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Building a blog with React and JSON data is a flexible approach that separates your content from your presentation layer."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why use JSON for blog content?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using JSON files for blog content offers several advantages. It's easy to edit, version control, and can be transformed into other formats if needed."
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "text": "// Example of loading blog data\nconst loadBlogPosts = async () => {\n  const response = await fetch('/api/blog-posts');\n  const posts = await response.json();\n  return posts;\n};"
+    },
+    {
+      "type": "image",
+      "src": "/images/blog/json-structure.jpg",
+      "alt": "JSON structure diagram",
+      "caption": "A visual representation of our JSON blog structure"
+    },
+    {
+      "type": "list",
+      "style": "bullet",
+      "items": [
+        "Easy to manage with Git",
+        "Can be edited with any text editor",
+        "Separation of concerns between content and presentation"
+      ]
+    }
+  ],
+  "readingTime": 5,
+  "relatedPosts": ["related-post-id-1", "related-post-id-2"]
+}
